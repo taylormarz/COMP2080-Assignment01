@@ -8,6 +8,12 @@ public class HugeInteger {
     private int length;
 
     public HugeInteger() {
+        // I'm not sure if this LinkedList part is correct, prompt was:
+        // Empty linked list is created
+        // That is: isPositive must be set to try by default
+        // Head and tail are set to null
+        // If this variable is to be displayed, a '0' should be printed (zero not stored)
+        // Length must be set to 0
         LinkedList<Object> ll = new LinkedList<>();
         isPositive = true;
         head = null;
