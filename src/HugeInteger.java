@@ -1,6 +1,3 @@
-import org.w3c.dom.Node;
-import java.util.LinkedList;
-
 public class HugeInteger {
     private boolean isPositive;
     private Node head;
@@ -8,49 +5,76 @@ public class HugeInteger {
     private int length;
 
     public HugeInteger() {
-        // Empty linked list is created
-        // That is: isPositive must be set to true by default
-        // Head and tail are set to null
-        // If this variable is to be displayed, a '0' should be printed (zero not stored)
-        // Length must be set to 0
         isPositive = true;
-        head = null;
-        tail = null;
+        this.head = null;
+        this.tail = null;
         length = 0;
     }
 
     public HugeInteger(String number) {
-        // Creates number from string with all leading zeros removed.
+        String regEx = "^0";
+        number = number.replaceAll(regEx, "");
+        // take string input and convert/store in long type
+        long numConvert = Long.parseLong(number);
+
+        // takes remainder(number after decimal after calc is done)
+        // stores it in num
+        while (numConvert != 0) {
+            long num = numConvert % 10;
+            numConvert = numConvert / 10;
+
+            // checks if linked list is null,
+            // sets first extracted number (remainder) as head if true
+            // when head exists, sets extracted number (remainder) as next node
+            if (head == null) {
+                head = new Node(num);
+            }
+            else
+            {
+                Node current = head;
+                while (current.next != null) {
+                    current = current.next;
+                }
+                current.next = new Node(num);
+            }
+        }
     }
 
     public void addPositive(HugeInteger num2) {
-        // Returns new HugeInteger containing result of
+        // returns new HugeInteger containing result of
         // adding num2 to stored number.
-        // Must assume num2 and number being added are BOTH positive
+        // must assume num2 and number being added are BOTH positive
     }
 
     public int compareTo(HugeInteger num2) {
-        // Returns -1 if number stored is less than num2
-        // Returns 0 if number stored is equal to num2
-        // Returns 1 if number stored is greater than num2
-        return 0;
+        // returns -1 if number stored is less than num2
+        // returns 0 if number stored is equal to num2
+        // returns 1 if number stored is greater than num2
+        return 0; // !!placeholder to avoid error
     }
 
+    @Override
     public String toString() {
-        // Returns string representation of number
-        if (length == 0) {
-            return "0";
+        // returns string representation of number
+        if(head == null){
+            return "O";
         }
-        return toString();
+        StringBuilder ll = new StringBuilder();
+        Node current = head;
+        while (current != null){
+            ll.insert(0, current.data);
+            current = current.next;
+        }
+        return ll.toString();
     }
 
     public void concatenateDigit(int digit) {
-        // Adds digit to end of number (front of list)
-        // If list is empty, leading zeros shouldn't be added
+        // adds digit to end of number (front of list)
+        // if list is empty, leading zeros shouldn't be added
     }
 
     public void addLast(int digit) {
-        // Adds digit to front of number (end of list)
-        // Can be used in 'addPositive' method
+        // adds digit to front of number (end of list)
+        // can be used in 'addPositive' method
     }
 }
