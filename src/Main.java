@@ -21,6 +21,11 @@ public class Main {
         HugeInteger hi4 = new HugeInteger("-00000002455434324344");
         System.out.println(hi4);
 
+        // Works for test case given, unsure if its what we actually need.
+        HugeInteger hi5 = new HugeInteger();
+        System.out.println(hi5);
+        hi5.concatenateDigit(3);
+        System.out.println(hi5);
 
         /* ********** WILL BE USED TO TEST ***************
         // testing concatenate with a single digit

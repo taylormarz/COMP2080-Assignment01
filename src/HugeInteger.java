@@ -58,6 +58,11 @@ public class HugeInteger {
     public void concatenateDigit(int digit) {
         // adds digit to end of number (front of list)
         // if list is empty, leading zeros shouldn't be added
+        if (head == null) {
+            head = new Node(digit);
+            return;
+        }
+        tail.next = new Node(digit);
     }
 
     public void addLast(int digit) {
