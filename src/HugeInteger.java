@@ -14,27 +14,15 @@ public class HugeInteger {
     public HugeInteger(String number) {
         String regEx = "^0";
         number = number.replaceAll(regEx, "");
-        // take string input and convert/store in long type
         long numConvert = Long.parseLong(number);
 
-        // takes remainder(number after decimal after calc is done)
-        // stores it in num
         while (numConvert != 0) {
             long num = numConvert % 10;
             numConvert = numConvert / 10;
-
-            // checks if linked list is null,
-            // sets first extracted number (remainder) as head if true
-            // when head exists, sets extracted number (remainder) as next node
-            if (head == null) {
-                head = new Node(num);
-            }
-            else
-            {
+            if (head == null) { head = new Node(num); }
+            else {
                 Node current = head;
-                while (current.next != null) {
-                    current = current.next;
-                }
+                while (current.next != null) { current = current.next; }
                 current.next = new Node(num);
             }
         }
@@ -56,16 +44,15 @@ public class HugeInteger {
     @Override
     public String toString() {
         // returns string representation of number
-        if(head == null){
-            return "O";
-        }
+        if(head == null){ return "O"; }
         StringBuilder ll = new StringBuilder();
         Node current = head;
         while (current != null){
             ll.insert(0, current.data);
             current = current.next;
         }
-        return ll.toString();
+        String regEx = "(?<=\\d)-";
+        return ll.toString().replaceAll(regEx, "");
     }
 
     public void concatenateDigit(int digit) {
