@@ -28,22 +28,25 @@ public class HugeInteger {
         }
     }
 
-    public void addPositive(HugeInteger num2) {
+    public HugeInteger addPositive(HugeInteger num2) {
         // returns new HugeInteger containing result of
         // adding num2 to stored number.
         // must assume num2 and number being added are BOTH positive
+        // Add Positive to be used here
+
+        // NOTE: I THINK LENGTH AND ISPOSTIVE CAN BE USED HERE
+        return new HugeInteger(); // !!PLACE HOLDER TO AVOID ERROR
     }
 
     public int compareTo(HugeInteger num2) {
         // returns -1 if number stored is less than num2
         // returns 0 if number stored is equal to num2
         // returns 1 if number stored is greater than num2
-        return 0; // !!placeholder to avoid error
+        return 0; // !!PLACE HOLDER TO AVOID ERROR
     }
 
     @Override
     public String toString() {
-        // returns string representation of number
         if(head == null){ return "O"; }
         StringBuilder ll = new StringBuilder();
         Node current = head;
@@ -56,12 +59,18 @@ public class HugeInteger {
     }
 
     public void concatenateDigit(int digit) {
-        // adds digit to end of number (front of list)
-        // if list is empty, leading zeros shouldn't be added
+        Node concatNode = new Node(digit);
+        concatNode.next = head;
+        head = concatNode;
     }
 
     public void addLast(int digit) {
-        // adds digit to front of number (end of list)
-        // can be used in 'addPositive' method
+        Node addLastNode = new Node(digit);
+        if(head == null){
+            head = addLastNode;
+            return; }
+        tail = head;
+        while(tail.next != null) { tail = tail.next; }
+        tail.next = addLastNode;
     }
 }
