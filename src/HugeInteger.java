@@ -40,9 +40,6 @@ public class HugeInteger {
     }
 
     public int compareTo(HugeInteger num2) {
-        // returns 0 if number stored is equal to num2
-        System.out.println("num2 length: " + num2.length);
-        System.out.printf("this length: " + this.length);
         System.out.println();
         if (num2.length > this.length) return -1;
         if (num2.length < this.length) return 1;
@@ -55,7 +52,7 @@ public class HugeInteger {
             num2current = num2current.next;
             current = current.next;
         }
-        return 0; 
+        return 0;
     }
 
     @Override
