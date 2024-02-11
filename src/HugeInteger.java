@@ -14,6 +14,7 @@ public class HugeInteger {
     public HugeInteger(String number) {
         String regEx = "^0";
         number = number.replaceAll(regEx, "");
+        length = number.length();
         long numConvert = Long.parseLong(number);
 
         while (numConvert != 0) {
@@ -39,10 +40,22 @@ public class HugeInteger {
     }
 
     public int compareTo(HugeInteger num2) {
-        // returns -1 if number stored is less than num2
         // returns 0 if number stored is equal to num2
-        // returns 1 if number stored is greater than num2
-        return 0; // !!PLACE HOLDER TO AVOID ERROR
+        System.out.println("num2 length: " + num2.length);
+        System.out.printf("this length: " + this.length);
+        System.out.println();
+        if (num2.length > this.length) return -1;
+        if (num2.length < this.length) return 1;
+
+        Node current = head;
+        Node num2current =  num2.head;
+        while (current.next != null) {
+            if (num2current.data > current.data) return -1;
+            if (num2current.data < current.data) return 1;
+            num2current = num2current.next;
+            current = current.next;
+        }
+        return 0; 
     }
 
     @Override
