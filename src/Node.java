@@ -1,3 +1,7 @@
+// Amanda Gurney,   101443253
+// Taylor Martin,   100849882
+// Ethan Sylvester, 101479568
+
 public class Node {
     long data;
     Node prev;

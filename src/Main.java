@@ -1,3 +1,7 @@
+// Amanda Gurney,   101443253
+// Taylor Martin,   100849882
+// Ethan Sylvester, 101479568
+
 public class Main {
     public static void main(String[] args) {
 
@@ -30,6 +34,10 @@ public class Main {
         System.out.println(hi9+" + "+hi10+" = "+hi11);
         System.out.println(hi5.compareTo(hi4));
         System.out.println(hi2.compareTo(hi1));
+        // add last, add number end of list front of number
+        HugeInteger hi12 = new HugeInteger("12345");
+        hi12.addLast(9);
+        System.out.println(hi12);
 
 //        EXPECTED OUTPUT
 //        0
@@ -43,5 +51,6 @@ public class Main {
 //        9996354 + 4656 = 10001010
 //        1
 //        -1
+//        912345
     }
 }

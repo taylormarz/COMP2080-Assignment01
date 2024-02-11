@@ -1,9 +1,14 @@
+// Amanda Gurney,   101443253
+// Taylor Martin,   100849882
+// Ethan Sylvester, 101479568
+
 public class HugeInteger {
-     final private boolean isPositive;
+    final private boolean isPositive;
     private Node head;
     private Node tail;
     final private int length;
 
+    // Creating empty linked list
     public HugeInteger() {
         isPositive = true;
         this.head = null;
@@ -11,6 +16,9 @@ public class HugeInteger {
         length = 0;
     }
 
+    // Taking string parameter and converting to long type
+    // Removing leading zeros, applying arithmetic operation to isolate remainder
+    // Adding remainder to head or head.next (so list is in reverse order)
     public HugeInteger(String number) {
         isPositive = !number.startsWith("-");
         String regEx = "^0";
@@ -30,6 +38,9 @@ public class HugeInteger {
         }
     }
 
+    // Adding parameter (num2) with stored number
+    // Assuming they're both positive, creating a final new HugeInteger
+    // object to hold the sum of the added numbers
     public HugeInteger addPositive(HugeInteger num2) {
         long integer1 = this.head.data, integer2 = num2.head.data;
         Node current = this.head, num2current = num2.head;
@@ -49,6 +60,8 @@ public class HugeInteger {
         return new HugeInteger(result);
     }
 
+    // Comparing parameter (num2) with stored number
+    // Returning -1, 1, and 0 if less than, greater than, or equal
     public int compareTo(HugeInteger num2) {
         // BASE CASES
         if (num2.isPositive && !this.isPositive) return -1;
@@ -85,6 +98,10 @@ public class HugeInteger {
         return 0;
     }
 
+    // Overriding to string method to print object
+    // Prints linked list back into original order from parameter
+    // Regular expression removes additional '-' signs from
+    // negative numbers stored in list if found
     @Override
     public String toString() {
         if(head == null){ return "O"; }
@@ -98,12 +115,19 @@ public class HugeInteger {
         return ll.toString().replaceAll(regEx, "");
     }
 
+    // Concatenates digit added to stored number
+    // Checks for a head, if found, previous pointer assigns
+    // the new node to be new head
     public void concatenateDigit(int digit) {
         Node concatNode = new Node(digit);
         concatNode.next = head;
+        if (head != null) {
+            head.prev = concatNode;
+        }
         head = concatNode;
     }
 
+    // Adds new digit to end of list, beginning of stored number
     public void addLast(int digit) {
         Node addLastNode = new Node(digit);
         if(head == null){
