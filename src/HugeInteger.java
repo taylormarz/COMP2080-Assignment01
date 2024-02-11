@@ -32,17 +32,26 @@ public class HugeInteger {
     }
 
     public HugeInteger addPositive(HugeInteger num2) {
-        // returns new HugeInteger containing result of
-        // adding num2 to stored number.
-        // must assume num2 and number being added are BOTH positive
-        // Add Positive to be used here
-
-        // NOTE: I THINK LENGTH AND ISPOSTIVE CAN BE USED HERE
-        return new HugeInteger(); // !!PLACE HOLDER TO AVOID ERROR
+        long integer1 = this.head.data, integer2 = num2.head.data;
+        Node current = this.head, num2current = num2.head;
+        long multiplier = 10;
+        while (current.next != null || num2current.next != null) {
+            if (current.next != null) {
+                integer1 += (current.next.data * multiplier) ;
+                current = current.next;
+            }
+            if (num2current.next != null) {
+                integer2 += (num2current.next.data * multiplier);
+                num2current = num2current.next;
+            }
+            multiplier *= 10;
+        }
+        String result = Long.toString(integer1 + integer2);
+        return new HugeInteger(result); 
     }
 
     public int compareTo(HugeInteger num2) {
-
+        // BASE CASES
         if (num2.isPositive && !this.isPositive) return -1;
         if (!num2.isPositive && this.isPositive) return 1;
         if (isPositive && num2.length > this.length) return -1;
