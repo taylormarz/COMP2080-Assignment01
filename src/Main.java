@@ -52,12 +52,20 @@ public class Main {
         HugeInteger hi13 = hi11.addPositive(hi12);
         System.out.println(hi10); // Should print '10001010'
 
-        HugeInteger hi14 = new HugeInteger("9996353");
+        HugeInteger hi14 = new HugeInteger("9996358");
+
+
+        HugeInteger hi21 = new HugeInteger("-1");
+        HugeInteger hi22 = new HugeInteger("-2455434324345");
+        HugeInteger hi23 = new HugeInteger("-9");
 
         // NEED TO ADD OPTIONS TO TEST COMPARE TO METHOD
-        System.out.println(hi11.compareTo(hi12));
-        System.out.println(hi12.compareTo(hi11));
-        System.out.println(hi11.compareTo(hi11));
-        System.out.println(hi11.compareTo(hi14));
+        System.out.println("COMPARES=================");
+        System.out.println(hi11.compareTo(hi12)); // 1
+        System.out.println(hi12.compareTo(hi11)); // -1
+        System.out.println(hi11.compareTo(hi11)); // 0
+        System.out.println(hi11.compareTo(hi14)); // -1
+        System.out.println(hi21.compareTo(hi22)); // 1
+        System.out.println(hi21.compareTo(hi23)); // 1
     }
 }

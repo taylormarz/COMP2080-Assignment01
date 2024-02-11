@@ -12,6 +12,8 @@ public class HugeInteger {
     }
 
     public HugeInteger(String number) {
+        if (number.startsWith("-")) isPositive = false;
+        else isPositive = true;
         String regEx = "^0";
         number = number.replaceAll(regEx, "");
         length = number.length();
@@ -40,16 +42,37 @@ public class HugeInteger {
     }
 
     public int compareTo(HugeInteger num2) {
-        if (num2.length > this.length) return -1;
-        if (num2.length < this.length) return 1;
+
+        if (num2.isPositive && !this.isPositive) return -1;
+        if (!num2.isPositive && this.isPositive) return 1;
+        if (isPositive && num2.length > this.length) return -1;
+        if (isPositive && num2.length < this.length) return 1;
+        if (!isPositive && num2.length > this.length) return 1;
+        if (!isPositive && num2.length < this.length) return -1;
 
         Node current = head;
         Node num2current =  num2.head;
-        while (current.next != null) {
+
+        if (isPositive) {
+            if (current.data > num2current.data) return 1;
+            if (current.data < num2current.data) return -1;
+
+            while (current.next != null) {
+                if (num2current.data > current.data) return -1;
+                if (num2current.data < current.data) return 1;
+                num2current = num2current.next;
+                current = current.next;
+            }
+        } else {
             if (num2current.data > current.data) return -1;
             if (num2current.data < current.data) return 1;
-            num2current = num2current.next;
-            current = current.next;
+
+            while (current.next != null) {
+                if (num2current.data < current.data) return -1;
+                if (num2current.data > current.data) return 1;
+                num2current = num2current.next;
+                current = current.next;
+            }
         }
         return 0;
     }
