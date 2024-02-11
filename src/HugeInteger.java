@@ -1,8 +1,8 @@
 public class HugeInteger {
-    private boolean isPositive;
+     final private boolean isPositive;
     private Node head;
     private Node tail;
-    private int length;
+    final private int length;
 
     public HugeInteger() {
         isPositive = true;
@@ -12,8 +12,7 @@ public class HugeInteger {
     }
 
     public HugeInteger(String number) {
-        if (number.startsWith("-")) isPositive = false;
-        else isPositive = true;
+        isPositive = !number.startsWith("-");
         String regEx = "^0";
         number = number.replaceAll(regEx, "");
         length = number.length();
@@ -47,7 +46,7 @@ public class HugeInteger {
             multiplier *= 10;
         }
         String result = Long.toString(integer1 + integer2);
-        return new HugeInteger(result); 
+        return new HugeInteger(result);
     }
 
     public int compareTo(HugeInteger num2) {
