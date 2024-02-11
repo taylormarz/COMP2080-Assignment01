@@ -40,7 +40,6 @@ public class HugeInteger {
     }
 
     public int compareTo(HugeInteger num2) {
-        System.out.println();
         if (num2.length > this.length) return -1;
         if (num2.length < this.length) return 1;
 
